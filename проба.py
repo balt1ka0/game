@@ -91,7 +91,7 @@ class MyGame(arcade.Window):
             wall.position = coordinate
             self.wall_list.append(wall)
 
-        coordinate2_list = [[700, 300], [1200, 800], [2000, 700], [2400, 400], [2500, 480], [3000, 590]]
+        coordinate2_list = [[700, 300], [1200, 800], [2000, 700], [2400, 400], [2500, 480], [3000, 590], [3300, 630], [3700, 420] ]
 
         for coordinate in coordinate2_list:
             wall = arcade.Sprite(
@@ -123,6 +123,8 @@ class MyGame(arcade.Window):
             self.key_up_pressed = True
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.key_right_pressed = True
+        elif key == arcade.key.LEFT or key == arcade.key.A:
+            self.key_left_pressed = True
 
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key."""
@@ -131,6 +133,8 @@ class MyGame(arcade.Window):
             self.key_up_pressed = False
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.key_right_pressed = False
+        elif key == arcade.key.LEFT or key == arcade.key.A:
+            self.key_left_pressed = False
 
     def center_camera_to_player(self):
         screen_center_x = self.player_sprite.center_x - (self.camera.viewport_width / 2)
@@ -150,6 +154,7 @@ class MyGame(arcade.Window):
             self.player_sprite.center_x -= PLAYER_X_SPEED
         if self.key_right_pressed:
             self.player_sprite.center_x += PLAYER_X_SPEED
+            
 
         if self.key_up_pressed:
             self.player_sprite.center_y += PLAYER_Y_SPEED
